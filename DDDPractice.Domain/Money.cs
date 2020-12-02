@@ -1,6 +1,6 @@
 namespace DDDPractice.Domain
 {
-    public class Money
+    public class Money : ValueObject<Money>
     {
         
         public int TenCentBalance { get; private set; }
@@ -34,6 +34,29 @@ namespace DDDPractice.Domain
                     m1.TenBirrBalance + m2.TenBirrBalance
                 );
             return sum;
+        }
+
+        protected override bool EqualsCore(Money other)
+        {
+            return TenCentBalance == other.TenCentBalance
+                   && QuarterCentBalance == other.QuarterCentBalance
+                   && FiftyCentBalance == other.FiftyCentBalance
+                   && OneBirrBalance == other.OneBirrBalance
+                   && FiveBirrBalance == other.FiveBirrBalance
+                   && TenBirrBalance == other.TenBirrBalance;
+
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            int hashCode = TenCentBalance;
+            hashCode = (hashCode * 397) ^ QuarterCentBalance;
+            hashCode = (hashCode * 397) ^ FiftyCentBalance;
+            hashCode = (hashCode * 397) ^ OneBirrBalance;
+            hashCode = (hashCode * 397) ^ FiveBirrBalance;
+            hashCode = (hashCode * 397) ^ TenBirrBalance;
+
+            return hashCode;
         }
     }
 }
