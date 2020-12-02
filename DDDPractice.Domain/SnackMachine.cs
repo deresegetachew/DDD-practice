@@ -2,7 +2,7 @@
 
 namespace DDDPractice.Domain
 {
-    public sealed class SnackMachine
+    public sealed class SnackMachine : Entity
     {
         public Money MoneyBalance { get; private set; }
         public Money MoneyInTransaction { get; private set; }
