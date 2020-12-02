@@ -1,3 +1,5 @@
+using System;
+
 namespace DDDPractice.Domain
 {
     public class Money : ValueObject<Money>
@@ -14,6 +16,21 @@ namespace DDDPractice.Domain
                 int quarterCentCount, int fiftyCentCount, 
                 int oneBirrCount, int fiveBirrCount, int tenBirrCount)
         {
+            
+            if(tenCentCount < 0)
+                throw new InvalidOperationException();
+            if(quarterCentCount < 0)
+                    throw new InvalidOperationException();
+            if(fiftyCentCount < 0)
+                    throw  new InvalidOperationException();
+            if(oneBirrCount < 0)
+                    throw new InvalidOperationException();
+            if(fiveBirrCount < 0)
+                throw  new InvalidOperationException();
+            if(tenBirrCount < 0)
+                throw new InvalidOperationException();
+            
+            
             TenCentBalance = tenCentCount;
             QuarterCentBalance = quarterCentCount;
             FiftyCentBalance = fiftyCentCount;
@@ -28,9 +45,9 @@ namespace DDDPractice.Domain
             Money sum = new Money(
                     m1.TenCentBalance + m2.TenCentBalance,
                     m1.QuarterCentBalance + m2.QuarterCentBalance,
-                    m1.FiftyCentBalance + m2.QuarterCentBalance,
                     m1.FiftyCentBalance + m2.FiftyCentBalance,
                     m1.OneBirrBalance + m2.OneBirrBalance,
+                    m1.FiveBirrBalance + m2.FiveBirrBalance,
                     m1.TenBirrBalance + m2.TenBirrBalance
                 );
             return sum;
