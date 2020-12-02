@@ -8,6 +8,7 @@
       <e p="DDD-practice.sln" t="IncludeFlat" />
       <e p="DDDPractice.Domain" t="IncludeRecursive">
         <e p="DDDPractice.Domain.csproj" t="IncludeRecursive" />
+        <e p="Entity.cs" t="Include" />
         <e p="Money.cs" t="Include" />
         <e p="SnackMachine.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
